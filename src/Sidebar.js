@@ -1,6 +1,8 @@
 import React from "react";
 import "./Sidebar.css";
-import SidebarOption from "./SidebarOption";
+import SidebarOption from "./options/SidebarOption";
+import PlaylistOption from "./options/PlaylistOption";
+
 import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import { LibraryMusic } from "@material-ui/icons";
@@ -8,7 +10,7 @@ import { useDataLayerValue } from "./DataLayer";
 
 function Sidebar() {
   const [{ playlists }, dispatch] = useDataLayerValue();
-
+console.log(playlists);
   return (
     <div className="sidebar">
       <img
@@ -17,14 +19,14 @@ function Sidebar() {
         alt="Spotify logo"
       />
 
-      <SidebarOption title="Home" Icon={HomeIcon} />
-      <SidebarOption title="Search" Icon={SearchIcon} />
-      <SidebarOption title="Your Library" Icon={LibraryMusic} />
+      <SidebarOption title="Home" Icon={HomeIcon}  />
+      <SidebarOption title="Search" Icon={SearchIcon} Linkto={"/search"} />
+      <SidebarOption title="Your Library" Icon={LibraryMusic} Linkto={"/your-library"} />
       <br />
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => (
-        <SidebarOption title={playlist.name} />
+        <PlaylistOption title={playlist.name} idPlaylist={playlist.id} />
       ))}
     </div>
   );

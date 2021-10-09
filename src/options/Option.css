@@ -1,4 +1,5 @@
-.sidebarOption {
+.sidebar .playlistOption  a ,
+.sidebarOption a {
   display: flex;
   align-items: center;
   color: gray;
@@ -7,14 +8,20 @@
   transition: 200ms color ease-in;
 }
 
-.sidebarOption:hover {
+.sidebar .playlistOption  a:hover,
+.sidebarOption a:hover,
+.sidebar .playlistOption  a.selected,
+.sidebarOption a.selected
+ {
   color: white;
 }
 
+.sidebar .playlistOption  ,
 .sidebarOption__icon {
   padding-left: 10px;
   padding-right: 10px;
 }
+.sidebar .playlistOption  > p ,
 .sidebarOption > p {
   margin-top: 10px;
   margin-left: 20px;

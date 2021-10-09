@@ -1,36 +1,33 @@
 import React from "react";
+import {
+	Switch,
+	Route
+  } from "react-router-dom";
 import "./Body.css";
 import Header from "./Header";
 import { useDataLayerValue } from "./DataLayer";
-import { PlayCircleFilled, Favorite, MoreHoriz } from "@material-ui/icons";
-import SongRow from "./SongRow";
+import Home from "./views/Home";
+
 
 function Body({ spotify }) {
-  const [{ discover_weekly }, dispatch] = useDataLayerValue();
+	const [{ discover_weekly }, dispatch] = useDataLayerValue();
 
-  return (
-    <div className="body">
-      <Header spotify={spotify} />
-      <div className="body__info">
-        <img src={discover_weekly?.images[0]?.url} alt="" />
-        <div className="body__infoText">
-          <strong>PLAYLIST</strong>
-          <h2>Discover Weekly</h2>
-          <p>{discover_weekly?.description}</p>
-        </div>
-      </div>
-      <div className="body__songs">
-        <div className="body__icons">
-          <PlayCircleFilled className="body__shuffle" />
-          <Favorite fontSize="large" />
-          <MoreHoriz />
-        </div>
-        {discover_weekly?.tracks.items.map((item) => (
-          <SongRow track={item.track} />
-        ))}
-      </div>
-    </div>
-  );
+	return (
+		<div className="body">
+			<Header spotify={spotify} />
+			<Switch>
+			<Route exact path="/">
+				<Home />
+			</Route>
+			{/* <Route path="/about">
+				<About />
+			</Route>
+			<Route path="/dashboard">
+				<Dashboard />
+			</Route> */}
+			</Switch>
+		</div>
+	);
 }
 
 export default Body;
