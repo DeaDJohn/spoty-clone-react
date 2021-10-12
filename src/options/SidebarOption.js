@@ -1,5 +1,5 @@
 import React from "react";
-import "./Option.css";
+import "../styles/Option.css";
 import { NavLink } from 'react-router-dom';
 import slugify from 'react-slugify';
 

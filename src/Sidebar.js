@@ -1,5 +1,5 @@
 import React from "react";
-import "./Sidebar.css";
+import "./styles/Sidebar.css";
 import SidebarOption from "./options/SidebarOption";
 import PlaylistOption from "./options/PlaylistOption";
 
@@ -7,10 +7,10 @@ import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
 import { LibraryMusic } from "@material-ui/icons";
 import { useDataLayerValue } from "./DataLayer";
+import slugify from 'react-slugify';
 
 function Sidebar() {
   const [{ playlists }, dispatch] = useDataLayerValue();
-console.log(playlists);
   return (
     <div className="sidebar">
       <img
@@ -19,14 +19,14 @@ console.log(playlists);
         alt="Spotify logo"
       />
 
-      <SidebarOption title="Home" Icon={HomeIcon}  />
-      <SidebarOption title="Search" Icon={SearchIcon} Linkto={"/search"} />
-      <SidebarOption title="Your Library" Icon={LibraryMusic} Linkto={"/your-library"} />
+      <SidebarOption key={slugify("Home")} title="Home" Icon={HomeIcon}  />
+      <SidebarOption key={slugify("Search")} title="Search" Icon={SearchIcon} Linkto={"/search"} />
+      <SidebarOption key={slugify("Your  Library")} title="Your Library" Icon={LibraryMusic} Linkto={"/your-library"} />
       <br />
       <strong className="sidebar__title">PLAYLISTS</strong>
       <hr />
       {playlists?.items?.map((playlist) => (
-        <PlaylistOption title={playlist.name} idPlaylist={playlist.id} />
+        <PlaylistOption key={playlist.idPlaylist} title={playlist.name} idPlaylist={playlist.id} Image={playlist.images[0].url} />
       ))}
     </div>
   );

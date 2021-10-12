@@ -1,18 +1,25 @@
 import React from "react";
-import "./Option.css";
+import "../styles/Option.css";
 import { Link } from 'react-router-dom';
 
 
-function PlaylistOption({ title, Icon, Linkto, idPlaylist }) {
+function PlaylistOption({ title, Image, Linkto, idPlaylist }) {
 
+  function setPlaylist ( id ) {
+    console.log( id );
+    // dispatch({
+    //   type: "SET_PLAYLISTS",
+    //   playlists,
+    // });
+  }
   return (
-    <div id={idPlaylist} className="playlistOption">
-      <Link to={{pathname: "/playlist",
-                hash: "#"+ idPlaylist,
-                state: { fromDashboard: true }}} 
+    <div id={"id-" + idPlaylist} className="playlistOption">
+      <Link  to={{pathname: `/playlist/${idPlaylist}`,
+                state: { fromDashboard: true }}}
+                onClick={setPlaylist( idPlaylist )}
         >
-        {Icon && <Icon className="playlistOption__icon" />}
-        {Icon ? <h4>{title}</h4> : <p>{title}</p>}
+        {Image && <img src={Image}  title ={title} />}
+        {Image ? <h4>{title}</h4> : <p>{title}</p>}
       </Link>
     </div>
   );

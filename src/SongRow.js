@@ -1,9 +1,10 @@
 import React from "react";
-import "./SongRow.css";
+import "./styles/SongRow.css";
 
 function SongRow({ track }) {
+
   return (
-    <div className="songRow">
+    <div key={track?.id} className="songRow">
       <img src={track.album.images[0].url} alt="" className="songRow__album" />
       <div className="songRow__info">
         <h1>{track.name}</h1>

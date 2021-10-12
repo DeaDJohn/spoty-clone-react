@@ -3,10 +3,11 @@ import {
 	Switch,
 	Route
   } from "react-router-dom";
-import "./Body.css";
+import "./styles/Body.css";
 import Header from "./Header";
 import { useDataLayerValue } from "./DataLayer";
 import Home from "./views/Home";
+import Playlist from "./views/Playlist";
 
 
 function Body({ spotify }) {
@@ -19,10 +20,10 @@ function Body({ spotify }) {
 			<Route exact path="/">
 				<Home />
 			</Route>
-			{/* <Route path="/about">
-				<About />
+			 <Route exact path="/playlist/:id">
+				<Playlist />
 			</Route>
-			<Route path="/dashboard">
+			{/*<Route path="/dashboard">
 				<Dashboard />
 			</Route> */}
 			</Switch>
