@@ -6,7 +6,7 @@ import { useParams } from 'react-router';
 
 function Playlist() {
 	const [{ token }, dispatch] = useDataLayerValue();
-	const { id } = useParams()
+	let { id } = useParams()
     console.log(id);
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -34,7 +34,7 @@ function Playlist() {
 			  setError(error);
 			}
 		  )
-	  }, [])
+	  }, [id])
 
 	return (
 	  <div className="Playlist">
