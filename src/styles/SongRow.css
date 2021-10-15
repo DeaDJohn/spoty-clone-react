@@ -17,10 +17,16 @@
 .songRow__info > h1 {
   font-size: 16px;
 }
-.songRow__info > p {
+.songRow__info > p,
+.songRow__info  a {
   font-size: 14px;
   margin-top: 3px;
   color: gray;
+  text-decoration: none;
+}
+.songRow__info  a:hover{
+  color: white;
+  text-decoration: underline;
 }
 .songRow__album {
   height: 40px;

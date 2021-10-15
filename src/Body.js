@@ -8,6 +8,8 @@ import Header from "./Header";
 import { useDataLayerValue } from "./DataLayer";
 import Home from "./views/Home";
 import Playlist from "./views/Playlist";
+import Album from "./views/Album";
+import Artist from "./views/Artist";
 
 
 function Body({ spotify }) {
@@ -20,8 +22,14 @@ function Body({ spotify }) {
 			<Route exact path="/">
 				<Home />
 			</Route>
-			 <Route exact path="/playlist/:id">
+			<Route exact path="/playlist/:id">
 				<Playlist />
+			</Route>
+			<Route exact path="/artist/:id">
+				<Artist />
+			</Route>
+			<Route exact path="/album/:id">
+				<Album />
 			</Route>
 			{/*<Route path="/dashboard">
 				<Dashboard />

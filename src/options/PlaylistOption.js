@@ -14,7 +14,7 @@ function PlaylistOption({ title, Image, Linkto, idPlaylist }) {
   }
   return (
     <div id={"id-" + idPlaylist} className="playlistOption">
-      <Link  to={{pathname: `/playlist/${idPlaylist}`,
+      <Link  to={{pathname: `/Playlist/${idPlaylist}`,
                 state: { fromDashboard: true }}}
                 onClick={setPlaylist( idPlaylist )}
         >

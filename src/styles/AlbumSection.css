@@ -1,0 +1,91 @@
+.section-albums{
+    margin-bottom: 40px;
+    webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 16px;
+    min-height: 300px;
+    min-width: 100%;
+    position: relative;
+}
+.section-albums_header{
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 16px;
+}
+.section-albums_header h2{
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 28px;
+    text-transform: none;
+}
+.section-albums_grid{
+    grid-gap: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px,1fr));
+    /* grid-auto-rows: 0; */
+    grid-template-rows: 1fr;
+    overflow-y: hidden;
+}
+
+.albumItem{
+    -webkit-box-flex: 1;
+    background: #181818;
+    border-radius: 4px;
+    -ms-flex: 1;
+    flex: 1;
+    isolation: isolate;
+    padding: 16px;
+    position: relative;
+    -webkit-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+}
+.albumItem_img{
+    max-width: 100%;
+    height: auto;
+}
+.albumItem_title{
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 24px;
+    text-transform: none;
+    color: white;
+    text-decoration: none;
+}
+.albumItem_button{
+    --size: 40px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 0;
+    border-radius: 500px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 8px;
+    height: 40px;
+    justify-content: center;
+    min-width: 40px;
+    -webkit-transition: -webkit-transform 33ms cubic-bezier(.3,0,0,1);
+    transition: -webkit-transform 33ms cubic-bezier(.3,0,0,1);
+    transition: transform 33ms cubic-bezier(.3,0,0,1);
+    transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1);
+    width: 40px;
+    background-color: #1db954;
+    color: #fff;
+}
+.albumItem:hover .albumItem_button{
+
+}
