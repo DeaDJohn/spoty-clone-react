@@ -5,7 +5,9 @@ const clientId = "769313b52bbe420bad3030547bf35592";
 if(process.env.VAR_NETLIFY){
   redirectUri = "https://juanjofb-spotify-clone.netlify.app/";
 }
-
+console.log(redirectUri);
+console.log(process.env.VAR_NETLIFY);
+console.log(process.env);
 const scopes = [
   "user-read-currently-playing",
   "user-read-recently-played",
