@@ -20,9 +20,10 @@ function App() {
 				type: "SET_TOKEN",
 				token: _token,
 			});
-			console.log("[token]", token);
+			// console.log(spotify);
 			spotify.setAccessToken(_token);
 			spotify.getMe().then((user) => {
+				console.log(user);
 				dispatch({
 					type: "SET_USER",
 					user,

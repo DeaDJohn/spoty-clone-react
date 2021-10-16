@@ -49,6 +49,15 @@
     -webkit-transition: background-color .3s ease;
     transition: background-color .3s ease;
 }
+.albumItem:hover{
+    background: #282828;
+}
+.albumItem:hover .albumItem_cover{
+    opacity: 1;
+    pointer-events: auto;
+    position: absolute;
+    transform: translateY(0);
+}
 .albumItem_img{
     max-width: 100%;
     height: auto;
@@ -61,6 +70,21 @@
     text-transform: none;
     color: white;
     text-decoration: none;
+}
+.albumItem_cover{
+    right: 8px;
+    border-radius: 500px;
+    bottom: 8px;
+    -webkit-box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+    box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    z-index: 2;
 }
 .albumItem_button{
     --size: 40px;
@@ -85,7 +109,12 @@
     width: 40px;
     background-color: #1db954;
     color: #fff;
+    transform: scale(1);
 }
-.albumItem:hover .albumItem_button{
-
+.albumItem_button:hover{
+    transform: scale(1.06);
+}
+.albumItem_header{
+    margin-bottom: 16px;
+    position: relative;
 }
