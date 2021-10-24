@@ -6,46 +6,79 @@
   background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
   overflow-y: overlay;
 }
+
 .body::-webkit-scrollbar {
   display: none;
 }
+
 .body__info {
   display: flex;
   align-items: flex-end;
   padding: 10px;
 }
+
 .body__infoText {
   flex: 1;
 }
-.body__infoText > h2 {
+
+.body__infoText>h2 {
   font-size: 48px;
   margin-bottom: 10px;
 }
-.body__infoText > p {
+
+.body__infoText>p {
   font-size: 14px;
 }
-.body__info > img {
+
+.body__info>img {
   height: 20vw;
+  max-width: 20vw;
+  object-fit: cover;
+  object-position: center;
   margin: 0 20px;
   box-shadow: 0 4px 60px rgba(0, 0, 0, 0.5);
 }
+
 .body__icons {
   display: flex;
   align-items: center;
 }
-.body__icons > .MuiSvgIcon-root {
+
+.body__icons>.MuiSvgIcon-root {
   margin-right: 20px;
 }
+
 .body__shuffle {
   font-size: 80px !important;
   margin-left: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 .body__shuffle:hover {
   transition: 100ms transform ease-in;
   transform: scale(1.08);
 }
+
 .body__songs {
   margin: 20px 0;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  margin-right: 0.4em;
+}
+
+.badge-genre {
+
+  color: #040404;
+  background-color: #fff;
 }

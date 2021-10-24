@@ -22,14 +22,17 @@
 }
 
 .songRow__info>p,
-.songRow__info a {
+.songRow__info a,
+.songTop>p,
+.songTop a {
   font-size: 14px;
   margin-top: 3px;
   color: gray;
   text-decoration: none;
 }
 
-.songRow__info a:hover {
+.songRow__info a:hover,
+.songTop a:hover {
   color: white;
   text-decoration: underline;
 }
@@ -39,9 +42,10 @@
   width: 40px;
 }
 
-.section-topSong{
+.section-topSong {
   margin-bottom: 40px;
 }
+
 .songTop {}
 
 .songTop_row {
@@ -56,10 +60,12 @@
   padding: 0 16px;
   border-radius: 6px;
 }
-.songTop:hover{
-  background-color: rgba(255,255,255,.3);
+
+.songTop:hover {
+  background-color: rgba(255, 255, 255, .3);
 }
-.songTop img{
+
+.songTop img {
   background-color: #282828;
   flex-shrink: 0;
   object-position: center center;
@@ -67,32 +73,49 @@
   height: 40px;
   margin-right: 16px;
 }
-.songTop_position{
+
+.songTop_position {
   -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
-.songTop_position span{
+
+.songTop_position span {
   display: inline-block;
-  height: 16px;
+  height: 20px;
   min-height: 16px;
   min-width: 16px;
   position: relative;
   width: 16px;
 }
-.songTop_information{
+
+.songTop_information {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+  text-transform: none;
+}
+.songTop_time{
   -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    font-size: 16px;
-    font-weight: 400;
-    letter-spacing: normal;
-    line-height: 24px;
-    text-transform: none;
+    grid-column: last;
+    justify-self: end;
+    color: rgb(179, 179, 179);
+}
+.songTop_row.tracklist-row {
+  grid-template-columns: [index] 16px [first] 4fr [last] minmax(120px, 1fr);
 }

@@ -3,9 +3,11 @@ import React ,{useState,useEffect }from 'react';
 import { useDataLayerValue } from "../DataLayer";
 import { PlayCircleFilled, Favorite, MoreHoriz } from "@material-ui/icons";
 import SongRow from "../SongRow";
+import AlbumItem from '../items/AlbumItem';
 import { useParams } from 'react-router';
 import '../styles/AlbumSection.css';
-import {Link} from 'react-router-dom';
+
+
 
 const spotify = new SpotifyWebApi();
 
@@ -18,6 +20,7 @@ function Artist() {
 	const [artist, setArtist] = useState([]);
 	const [albums, setAlbums] = useState([]);
 	const [topSongs, setTopSongs] = useState([]);
+	const [relartedArtist, setRelartedArtist] = useState([]);
 	// const artistUrl = `https://api.spotify.com/v1/artists/${id}`;
 	// const artistAlbumsUrl = `https://api.spotify.com/v1/artists/${id}/albums`;
 
@@ -26,6 +29,7 @@ function Artist() {
 		console.log( spotify.getArtist(id) );
 
 		spotify.getArtist(id).then((artist) => {
+			console.log('Artista: ' + artist);
 			setArtist(artist);
 		});
 
@@ -42,6 +46,15 @@ function Artist() {
 			function (data) {
 				console.log('Artist top', data);
 				setTopSongs(data)
+			  },
+			  function (err) {
+				console.error(err);
+			  }
+		);
+		spotify.getArtistRelatedArtists(id).then(
+			function (data) {
+				console.log('Artist top', data);
+				setRelartedArtist(data)
 			  },
 			  function (err) {
 				console.error(err);
@@ -95,11 +108,14 @@ function Artist() {
 	  <div className="artist">
 		  {console.log(Object.keys(artist).length)}
 			<div className="body__info">
-			{Object.keys(artist).length > 0 &&<img src={artist?.images[0]?.url} alt="" /> }
+			{Object.keys(artist).length > 0 &&<img src={artist?.images[0]?.url} alt={artist?.name} width={artist?.images[0]?.width + 'px'} height={artist?.images[0]?.height + 'px'} /> }
 			<div className="body__infoText">
 				<strong>Artist</strong>
 				{Object.keys(artist).length > 0 && <h2>{artist?.name}</h2>}
 				{Object.keys(artist).length > 0 && <p>{artist?.description}</p>}
+				{Object.keys(artist).length > 0 && artist?.genres.map((genre) => (
+					<span className="badge badge-genre">{genre}</span>
+				))}
 			</div>
 		</div>
 		<div className="body__songs">
@@ -120,9 +136,9 @@ function Artist() {
 									<span>{index}</span>
 								</div>
 								<div className="songTop_information">
-									<img src={item.album.images[0].url} alt="" className="songTop__album" />
+									<img src={item?.album.images[0].url} alt="" className="songTop__album" />
 									<div className="songTop__info">
-										<p>{item.name}</p>
+										<p>{item?.name}</p>
 									</div>
 								</div>
 								<div className="songTop_reproduction">
@@ -140,31 +156,7 @@ function Artist() {
 				</div>
 				<div className="section-albums_grid">
 					{Object.keys(albums).length > 0 && albums?.items.map((item) => (
-						<div className="albumItem">
-							<div className="albumItem_container">
-								<div className="albumItem_header">
-									<div className="">
-										<div className=""><img aria-hidden="false" draggable="false" loading="lazy"
-												src={item?.images[0].url}
-												data-testid="card-image" alt={item.name} className="albumItem_img" /></div>
-									</div>
-									<div className="albumItem_cover">
-										<button className="albumItem_button"><svg height="16" role="img" width="16" viewBox="0 0 24 24"
-												aria-hidden="true">
-												<polygon points="21.57 12 5.98 3 5.98 21 21.57 12" fill="currentColor"></polygon>
-											</svg></button></div>
-								</div>
-								<div className="">
-									<Link className="albumItem_title" draggable="false" title={item.name}
-										to="/album/{item?.id}">
-										{item.name}
-									</Link>
-									<div className="" >
-										<time dateTime={(new Date(item?.release_date)).getFullYear()}>{(new Date(item?.release_date)).getFullYear()}</time> - <span className="">Álbum</span></div>
-									</div>
-								<div className="" data-testid="card-click-handler"></div>
-							</div>
-						</div>
+						<AlbumItem key={item.id} item={item} />
 					))}
 				</div>
 			</div>
