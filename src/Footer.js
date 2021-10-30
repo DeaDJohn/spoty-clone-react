@@ -23,25 +23,30 @@ function Footer() {
   const [currentSong, setCurrentSong] = useState([]);
   const [statePlay, setStatePlay] = useState(false);
   const [volumen, setVolumen] = useState(0);
-  // spotify.getMyCurrentPlayingTrack().then((item) => {
-  //   console.log(item);
-  //   setCurrentSong(item);
-  // });
-  console.log(currentSong);
-
+ 
   function skipNextSong() {
     spotify.skipToNext();
+    getCurrentSong();
   }
   function skipPrevSong() {
     spotify.skipToPrev();
+    getCurrentSong();
   }
   function pauseSong(){
     spotify.pause();
     setStatePlay(false);
+    getCurrentSong();
   }
   function playSong(){
     spotify.play();
     setStatePlay(true);
+    getCurrentSong();
+  }
+
+  function getCurrentSong(){
+    spotify.getMyCurrentPlayingTrack().then((item) => {
+      setCurrentSong(item);
+    });
   }
   const setCurrentVolume = (event, newValue) => {
     spotify.setVolume(newValue);
@@ -51,6 +56,7 @@ function Footer() {
 	const playbackUrl = `https://api.spotify.com/v1/me/player?market=ES`;
 
 	useEffect(() => {
+    getCurrentSong();
 		fetch(playbackUrl, {headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json",
@@ -59,14 +65,11 @@ function Footer() {
 		  .then(res => res.json())
 		  .then(
 			  (result) => {
-				console.log(result);
 			  setPlayback(result);
         setStatePlay(result.is_playing)
         setVolumen(result.device.volume_percent);
 			},
-			// Nota: es importante manejar errores aquí y no en 
-			// un bloque catch() para que no interceptemos errores
-			// de errores reales en los componentes.
+
 			(error) => {
 
 			}
