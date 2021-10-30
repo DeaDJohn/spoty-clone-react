@@ -1,8 +1,6 @@
 import SpotifyWebApi from "spotify-web-api-js";
 import React ,{useState,useEffect }from 'react';
-import { useDataLayerValue } from "../DataLayer";
 import { PlayCircleFilled, Favorite, MoreHoriz } from "@material-ui/icons";
-import SongRow from "../SongRow";
 import AlbumItem from '../items/AlbumItem';
 import { useParams } from 'react-router';
 import '../styles/AlbumSection.css';
@@ -15,12 +13,12 @@ function Artist() {
 
 	let { id } = useParams()
 
-	const [error, setError] = useState(null);
-	const [isLoaded, setIsLoaded] = useState(false);
+	// const [error, setError] = useState(null);
+	// const [isLoaded, setIsLoaded] = useState(false);
 	const [artist, setArtist] = useState([]);
 	const [albums, setAlbums] = useState([]);
 	const [topSongs, setTopSongs] = useState([]);
-	const [relartedArtist, setRelartedArtist] = useState([]);
+	const [relatedArtist, setRelatedArtist] = useState([]);
 	// const artistUrl = `https://api.spotify.com/v1/artists/${id}`;
 	// const artistAlbumsUrl = `https://api.spotify.com/v1/artists/${id}/albums`;
 
@@ -54,7 +52,7 @@ function Artist() {
 		spotify.getArtistRelatedArtists(id).then(
 			function (data) {
 				console.log('Artist top', data);
-				setRelartedArtist(data)
+				setRelatedArtist(data)
 			  },
 			  function (err) {
 				console.error(err);

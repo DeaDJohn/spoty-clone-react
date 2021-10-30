@@ -10,7 +10,7 @@ function PlaylistOption({ title, Image, Linkto, idPlaylist }) {
       <Link  to={{pathname: `/Playlist/${idPlaylist}`,
                 state: { fromDashboard: true }}}
         >
-        {Image && <img src={Image}  title ={title} />}
+        {Image && <img src={Image}  title ={title} width="191" height="191" alt={title}/>}
         {Image ? <h4>{title}</h4> : <p>{title}</p>}
       </Link>
     </div>

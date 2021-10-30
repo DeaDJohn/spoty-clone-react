@@ -7,19 +7,21 @@
   min-width: 230px;
   background-color: #040404;
   overflow: overlay;
+  padding-top: 24px;
 }
 
-.sidebar > hr {
+.sidebar>hr {
   border: 1px solid #282828;
   width: 90%;
   margin: 10px auto;
 }
 
 .sidebar__logo {
-  height: 100px;
-  width: auto;
   padding: 10px;
-  margin: auto;
+  margin: 0 0 18px 0;
+  height: 40px;
+  max-width: 131px;
+  width: 100%;
 }
 
 .sidebar__title {

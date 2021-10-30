@@ -5,7 +5,6 @@ import {
   } from "react-router-dom";
 import "./styles/Body.css";
 import Header from "./Header";
-import { useDataLayerValue } from "./DataLayer";
 import Home from "./views/Home";
 import Playlist from "./views/Playlist";
 import Album from "./views/Album";
@@ -13,7 +12,6 @@ import Artist from "./views/Artist";
 
 
 function Body({ spotify }) {
-	const [{ discover_weekly }, dispatch] = useDataLayerValue();
 
 	return (
 		<div className="body">

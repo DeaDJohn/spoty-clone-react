@@ -6,7 +6,7 @@ import { useParams } from 'react-router';
 import { Link } from "react-router-dom";
 
 function Album() {
-	const [{ token }, dispatch] = useDataLayerValue();
+	const [{ token }] = useDataLayerValue();
 	let { id } = useParams()
     console.log(id);
 	const [error, setError] = useState(null);
