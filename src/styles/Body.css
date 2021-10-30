@@ -1,8 +1,8 @@
 .body {
-  height: 100vh;
+  height: 101vh;
   flex: 0.8;
   color: white;
-  padding: 30px 30px 75px;
+  padding: 30px 30px 100px;
   background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
   overflow-y: overlay;
 }
