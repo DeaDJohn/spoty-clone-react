@@ -29,7 +29,7 @@ function Footer() {
     getCurrentSong();
   }
   function skipPrevSong() {
-    spotify.skipToPrev();
+    spotify.skipToPrevious();
     getCurrentSong();
   }
   function pauseSong(){
