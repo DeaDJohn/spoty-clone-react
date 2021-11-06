@@ -43,6 +43,11 @@ const reducer = (state, action) => {
 				...state,
 				currentSong: action.currentSong,
 			};
+		case "SET_CURRENT_VOLUME":
+			return {
+				...state,
+				currentVolume: action.currentVolume,
+			};
 		default:
 			return state;
 	}

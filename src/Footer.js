@@ -15,21 +15,30 @@ import {
 import { Grid, Slider } from "@material-ui/core";
 import {Link} from 'react-router-dom';
 import { useDataLayerValue } from "./DataLayer";
+
 const spotify = new SpotifyWebApi();
 
 function Footer() {
 
-	const [{ token }] = useDataLayerValue();
-	const [currentSong, setCurrentSong] = useState([]);
+	const [{ token, currentSong, currentVolume}, dispatch] = useDataLayerValue();
+	// const [currentSong, setCurrentSong] = useState([]);
 	const [statePlay, setStatePlay] = useState(false);
 	const [volumen, setVolumen] = useState(0);
 
 	function skipNextSong() {
-		spotify.skipToNext();
-		getCurrentSong();
+		spotify.skipToNext().then(() => {
+			setTimeout(() =>{
+				getCurrentSong();
+			},100);
+		}
+		);
 	}
 	function skipPrevSong() {
-		spotify.skipToPrevious();
+		spotify.skipToPrevious().then(() => {
+			setTimeout(() =>{
+				getCurrentSong();
+			},100);
+		});
 		getCurrentSong();
 	}
 	function pauseSong(){
@@ -45,18 +54,25 @@ function Footer() {
 
 	function getCurrentSong(){
 		spotify.getMyCurrentPlayingTrack().then((item) => {
-			setCurrentSong(item);
+			dispatch({
+				type: "SET_CURRENT_SONG",
+				currentSong: item
+			});
 		});
 	}
 	const setCurrentVolume = (event, newValue) => {
 		spotify.setVolume(newValue);
-		setVolumen(newValue);
+		dispatch({
+			type: "SET_CURRENT_VOLUME",
+			currentVolume: newValue
+		});
 	};
 	const [playback, setPlayback] = useState([]);
 	const playbackUrl = `https://api.spotify.com/v1/me/player?market=ES`;
 
 	useEffect(() => {
 		getCurrentSong();
+		setCurrentVolume();
 		fetch(playbackUrl, {headers: {
 			"Accept": "application/json",
 			"Content-Type": "application/json",
@@ -74,9 +90,11 @@ function Footer() {
 
 			}
 			)
-		}, [])
+	}, []);
+
 	return (
 		<footer className="footer">
+			{console.log(currentSong)}
 			<div className="footer__left">
 				{ currentSong &&
 					<Fragment>
@@ -112,11 +130,11 @@ function Footer() {
 						<PlaylistPlay />
 					</Grid>
 					<Grid item>
-						{volumen<50 && <VolumeDown />}
-						{volumen>=50 && <VolumeUp />}
+						{currentVolume<50 && <VolumeDown />}
+						{currentVolume>=50 && <VolumeUp />}
 					</Grid>
 					<Grid item xs>
-						<Slider min={0} max={100} aria-label="Volume" value={volumen} onChange={setCurrentVolume}/>
+						<Slider min={0} max={100} aria-label="Volume" value={currentVolume} onChange={setCurrentVolume}/>
 					</Grid>
 				</Grid>
 			</div>
