@@ -40,7 +40,7 @@ function Album() {
 	return (
 	  	<div className="album">
 			<section className="body__info">
-				{Object.keys(album).length > 0 &&<img src={album?.images[0]?.url} alt="" /> }
+				{Object.keys(album).length > 0 &&<img src={album?.images[0]?.url} alt={album?.name} /> }
 				<div className="body__infoText">
 					<strong>Album</strong>
 					{Object.keys(album).length > 0 && <h2>{album?.name}</h2>}

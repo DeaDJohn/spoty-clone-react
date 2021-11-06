@@ -39,7 +39,7 @@ function Playlist() {
 	return (
 		<div className="Playlist">
 			<section className="body__info">
-				{Object.keys(playlist).length > 0 &&<img src={playlist?.images[0]?.url} alt="" /> }
+				{Object.keys(playlist).length > 0 &&<img src={playlist?.images[0]?.url} alt={playlist?.name} /> }
 				<div className="body__infoText">
 					<strong>PLAYLIST</strong>
 					{Object.keys(playlist).length > 0 && <h2>{playlist?.name}</h2>}

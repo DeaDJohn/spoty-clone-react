@@ -58,7 +58,7 @@ function Home() {
 										<span>{index}</span>
 									</div>
 									<div className="songTop_information">
-										<img src={item?.album.images[0].url} alt="" className="songTop__album" />
+										<img src={item?.album.images[0].url} alt={item?.name} className="songTop__album" />
 										<div className="songTop__info">
 											<p>{item?.name}</p>
 										</div>
