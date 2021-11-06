@@ -37,27 +37,26 @@ function Playlist() {
 	  }, [id])
 
 	return (
-	  <div className="Playlist">
-		  {console.log(Object.keys(playlist).length)}
-			<div className="body__info">
-			{Object.keys(playlist).length > 0 &&<img src={playlist?.images[0]?.url} alt="" /> }
-			<div className="body__infoText">
-				<strong>PLAYLIST</strong>
-				{Object.keys(playlist).length > 0 && <h2>{playlist?.name}</h2>}
-				{Object.keys(playlist).length > 0 && <p>{playlist?.description}</p>}
-			</div>
+		<div className="Playlist">
+			<section className="body__info">
+				{Object.keys(playlist).length > 0 &&<img src={playlist?.images[0]?.url} alt="" /> }
+				<div className="body__infoText">
+					<strong>PLAYLIST</strong>
+					{Object.keys(playlist).length > 0 && <h2>{playlist?.name}</h2>}
+					{Object.keys(playlist).length > 0 && <p>{playlist?.description}</p>}
+				</div>
+			</section>
+			<section className="body__songs">
+				<div className="body__icons">
+					<PlayCircleFilled className="body__shuffle" />
+					<Favorite fontSize="large" />
+					<MoreHoriz />
+				</div>
+				{Object.keys(playlist).length > 0 && playlist?.tracks.items.map((item) => (
+					<SongRow key={item.track?.id} track={item.track} />
+				))} 
+			</section>
 		</div>
-		<div className="body__songs">
-			<div className="body__icons">
-				<PlayCircleFilled className="body__shuffle" />
-				<Favorite fontSize="large" />
-				<MoreHoriz />
-			</div>
-			{Object.keys(playlist).length > 0 && playlist?.tracks.items.map((item) => (
-				<SongRow key={item.track?.id} track={item.track} />
-			))} 
-		</div>
-	  </div>
 	);
   }
 

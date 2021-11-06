@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 function PlaylistOption({ title, Image, Linkto, idPlaylist }) {
 
   return (
-    <div id={"id-" + idPlaylist} className="playlistOption">
+    <div id={"playlistOption-" + idPlaylist} className="playlistOption">
       <Link  to={{pathname: `/Playlist/${idPlaylist}`,
                 state: { fromDashboard: true }}}
         >
