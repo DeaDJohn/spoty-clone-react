@@ -49,8 +49,8 @@ function Artist() {
 					<strong>Artist</strong>
 					{Object.keys(artist).length > 0 && <h2>{artist?.name}</h2>}
 					{Object.keys(artist).length > 0 && <p>{artist?.description}</p>}
-					{Object.keys(artist).length > 0 && artist?.genres.map((genre) => (
-						<span className="badge badge-genre">{genre}</span>
+					{Object.keys(artist).length > 0 && artist?.genres.map((genre, index) => (
+						<span key={index} className="badge badge-genre">{genre}</span>
 					))}
 				</div>
 			</section>

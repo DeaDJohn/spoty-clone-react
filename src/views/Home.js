@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useDataLayerValue } from "../DataLayer";
 import { PlayCircleFilled, Favorite, MoreHoriz } from "@material-ui/icons";
 import SongRow from "../SongRow";
+import SongTop from '../items/SongTop';
 import AlbumItem from '../items/AlbumItem';
 
 function Home() {
@@ -52,23 +53,7 @@ function Home() {
 					</div>
 					<div className="section-topSong_grid">
 						{Object.keys(tracks).length > 0 && tracks?.items.map((item, index) => (
-							<div id={`songTop-${item?.id}`} key={item?.id} className="section-topSong_item"  className="songTop">
-								<div className="songTop_row">
-									<div className="songTop_position">
-										<span>{index}</span>
-									</div>
-									<div className="songTop_information">
-										<img src={item?.album.images[0].url} alt={item?.name} className="songTop__album" />
-										<div className="songTop__info">
-											<p>{item?.name}</p>
-										</div>
-									</div>
-									<div className="songTop_reproduction">
-									</div>
-									<div className="songTop_time">
-									</div>
-								</div>
-							</div>
+							<SongTop key={item?.id} item={item} index={index} />
 						))}
 					</div>
 				</div>

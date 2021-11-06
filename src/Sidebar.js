@@ -26,7 +26,7 @@ function Sidebar() {
 			<hr />
 			<nav>
 			{playlists?.items?.map((playlist) => (
-				<PlaylistOption key={playlist.idPlaylist} title={playlist.name} idPlaylist={playlist.id} Image={playlist.images[0].url} />
+				<PlaylistOption key={`playlist-${playlist.id}`} title={playlist.name} idPlaylist={playlist.id} Image={playlist.images[0].url} />
 			))}
 			</nav>
 		</aside>
