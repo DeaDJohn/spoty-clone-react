@@ -17,6 +17,7 @@ function Artist() {
 	// const [isLoaded, setIsLoaded] = useState(false);
 	const [artist, setArtist] = useState([]);
 	const [albums, setAlbums] = useState([]);
+	const [single, setSingle] = useState([]);
 	const [topSongs, setTopSongs] = useState([]);
 	const [relatedArtist, setRelatedArtist] = useState([]);
 	// const artistUrl = `https://api.spotify.com/v1/artists/${id}`;
@@ -26,14 +27,16 @@ function Artist() {
 
 		Promise.all([
 			spotify.getArtist(id),
-			spotify.getArtistAlbums(id),
+			spotify.getArtistAlbums(id, {include_groups:'album', limit: 50, market: 'ES' }),
+			spotify.getArtistAlbums(id, {include_groups:'single', limit: 50, market: 'ES' }),
 			spotify.getArtistTopTracks(id, "ES"),
 			spotify.getArtistRelatedArtists(id),
 		]).then(function (data) {
-			setArtist(data[0]);;
+			setArtist(data[0]);
 			setAlbums(data[1]);
-			setTopSongs(data[2]);
-			setRelatedArtist(data[3]);
+			setSingle(data[2])
+			setTopSongs(data[3]);
+			setRelatedArtist(data[4]);
 		}).catch(function (error) {
 			// if there's an error, log it
 			console.log(error);
@@ -69,7 +72,7 @@ function Artist() {
 							<div id={`songTop-${item?.id}`} key={item?.id} className="songTop">
 								<div className="songTop_row">
 									<div className="songTop_position">
-										<span>{index}</span>
+										<span>{index + 1}</span>
 									</div>
 									<div className="songTop_information">
 										<img src={item?.album.images[0].url} alt={item?.name} className="songTop__album" />
@@ -93,6 +96,16 @@ function Artist() {
 					<div className="section-albums_grid">
 						{Object.keys(albums).length > 0 && albums?.items.map((item) => (
 							<AlbumItem key={item.id} item={item} />
+						))}
+					</div>
+				</div>
+				<div className="section-albums" aria-label="Singles">
+					<div className="section-albums_header">
+						<h2 className="section-albums_title" as="h2">Singles</h2>
+					</div>
+					<div className="section-albums_grid">
+						{Object.keys(single).length > 0 && single?.items.map((item) => (
+							<AlbumItem key={item.type+'-'+item.id} item={item} />
 						))}
 					</div>
 				</div>

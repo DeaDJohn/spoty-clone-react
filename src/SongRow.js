@@ -19,7 +19,7 @@ function SongRow({ track }) {
 			<div className="songRow__info">
 				<h1>{track?.name}</h1>
 				<p>
-						{track?.artists.map((artist, index) => <ArtistItem  artist={artist} index={index}/>)}
+						{track?.artists.map((artist, index) => <ArtistItem key={index}  artist={artist} index={index}/>)}
 
 				<Link to={`/Album/${track?.album.id}`}>
 					{track?.album.name}

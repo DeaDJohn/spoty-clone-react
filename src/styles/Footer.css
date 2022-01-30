@@ -54,3 +54,9 @@
 .footer__right * .MuiSlider-root {
   color: #1ed15e;
 }
+.footer a {
+  color: inherit;
+  &:hover {
+    opacity: 0.5;
+  }
+}

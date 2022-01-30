@@ -53,7 +53,7 @@ function Home() {
 					</div>
 					<div className="section-topSong_grid">
 						{Object.keys(tracks).length > 0 && tracks?.items.map((item, index) => (
-							<SongTop key={item?.id} item={item} index={index} />
+							<SongTop key={item?.id} item={item} index={index + 1} />
 						))}
 					</div>
 				</div>

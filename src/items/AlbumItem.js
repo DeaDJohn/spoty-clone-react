@@ -5,7 +5,7 @@ function AlbumItem({item}) {
 
 
   return (
-	<div className="albumItem">
+	<div className="albumItem" id={'albumItem-' + item.id}>
 		<div className="albumItem_container">
 			<div className="albumItem_header">
 				<div className="">

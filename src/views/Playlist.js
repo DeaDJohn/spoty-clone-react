@@ -37,7 +37,7 @@ function Playlist() {
 	  }, [id])
 
 	return (
-		<div className="Playlist">
+		<div key={id} className="Playlist">
 			<section className="body__info">
 				{Object.keys(playlist).length > 0 &&<img src={playlist?.images[0]?.url} alt={playlist?.name} /> }
 				<div className="body__infoText">
