@@ -5,7 +5,7 @@ import "../styles/SongRow.css";
 import { useParams } from 'react-router';
 import SongTop from '../items/SongTop';
 import { Link } from "react-router-dom";
-import  {millisecondsToMinutesAndSeconds}  from "../utils/utils";
+import  {getArtistAlbums}  from "../utils/utils";
 
 function Album() {
 	const [{ token }] = useDataLayerValue();
@@ -13,18 +13,14 @@ function Album() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [album, setAlbum] = useState([]);
-	const albumUrl = `https://api.spotify.com/v1/albums/${id}`;
-
+	
+	
+	
 
 	useEffect(() => {
-		fetch(albumUrl, {headers: {
-			"Accept": "application/json",
-			"Content-Type": "application/json",
-			"Authorization": `Bearer ${token}`,
-		  }})
-		  .then(res => res.json())
-		  .then(
-			  (result) => {
+		getArtistAlbums(id, token)
+		.then(
+			(result) => {
 			  setIsLoaded(true);
 			  setAlbum(result);
 			},
@@ -35,7 +31,11 @@ function Album() {
 			  setIsLoaded(true);
 			  setError(error);
 			}
-		  )
+		  ).catch( (error) => {
+			console.log(error);
+			setIsLoaded(true);
+			setError(error);
+		  } )
 	  }, [id])
 
 	return (
