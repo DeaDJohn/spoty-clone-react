@@ -20,3 +20,22 @@ export const getArtistAlbums = async (id, token) => {
         throw new Error(response.status);
       }
 }
+export const setSongQueue = async (uri, token) => {
+  
+  const albumUrl = `https://api.spotify.com/v1/me/player/queue?uri=${uri}`;
+  const response = await fetch(albumUrl, 
+    {method: 'POST',
+    headers: {
+    
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    }});
+
+    console.log(response);
+    if (response.status == 204) {
+      return response.json();
+    } else {
+      throw new Error(response.status);
+    }
+}

@@ -1,11 +1,14 @@
 import React from "react";
 // import {Link} from 'react-router-dom';
-import {millisecondsToMinutesAndSeconds} from '../utils/utils';
+import {millisecondsToMinutesAndSeconds, setSongQueue} from '../utils/utils';
+import { useDataLayerValue } from "../DataLayer";
 
 function SongTop({item, index}) {
+	console.log(useDataLayerValue());
+	const [{ token }] = useDataLayerValue();
 
   return (
-	<div id={`songTop-${item?.id}`} className="section-topSong_item"  className="songTop">
+	<div id={`songTop-${item?.id}`} className="section-topSong_item"  className="songTop" onClick={() => setSongQueue(item?.uri, token)}>
 		<div className="songTop_row">
 			<div className="songTop_position">
 				<span>{index}</span>

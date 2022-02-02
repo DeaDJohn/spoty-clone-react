@@ -39,7 +39,6 @@ function Footer() {
 				getCurrentSong();
 			},100);
 		});
-		getCurrentSong();
 	}
 	function pauseSong(){
 		spotify.pause();

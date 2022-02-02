@@ -41,6 +41,12 @@ function App() {
 					discover_weekly: playlist,
 				});
 			});
+			spotify.getMyDevices().then((device) => {
+				dispatch({
+					type: "SET_DEVICE",
+					current_device: device,
+				});
+			})
 		}
 	}, [dispatch]);
 
