@@ -9,6 +9,8 @@ import Home from "./views/Home";
 import Playlist from "./views/Playlist";
 import Album from "./views/Album";
 import Artist from "./views/Artist";
+import Novedades from "./views/Novedades";
+
 
 
 function Body({ spotify }) {
@@ -29,9 +31,9 @@ function Body({ spotify }) {
 			<Route exact path="/album/:id">
 				<Album />
 			</Route>
-			{/*<Route path="/dashboard">
-				<Dashboard />
-			</Route> */}
+			<Route path="/novedades">
+				<Novedades />
+			</Route>
 			</Switch>
 		</div>
 	);

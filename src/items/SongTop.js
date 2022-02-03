@@ -7,7 +7,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 
 function SongTop({item, index}) {
-	console.log(useDataLayerValue());
+
 	const [{ token }] = useDataLayerValue();
 
 	const [addQueue, setAddQueue] = useState(false);
@@ -16,7 +16,7 @@ function SongTop({item, index}) {
 	const setSongQueue = async (uri, token) => {
 		setAddingQueue(true);
 		const devices = await getDevice(token);
-		console.log(devices);
+
 		const queueUrl = `https://api.spotify.com/v1/me/player/queue?uri=${uri}&device_id=${devices}`;
 		const response = await fetch(queueUrl,
 			{method: 'POST',
@@ -26,7 +26,7 @@ function SongTop({item, index}) {
 				"Authorization": `Bearer ${token}`,
 			}});
 
-			
+
 			if (response.status == 204) {
 				// const res = await response.json();
 				setTimeout(() => {

@@ -13,9 +13,6 @@ function Album() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [album, setAlbum] = useState([]);
-	
-	
-	
 
 	useEffect(() => {
 		getArtistAlbums(id, token)
@@ -56,26 +53,6 @@ function Album() {
 				</div>
 				{Object.keys(album).length > 0 && album?.tracks.items.map((item, index) => (
 					<SongTop key={item?.id} item={item} index={index} />
-					// <div className="songTop ">
-					// 	<div className="songTop_row tracklist-row">
-					// 		<div className="songTop_position">
-					// 			<span>{item.track_number}</span>
-					// 		</div>
-					// 		<div className="songTop_information">
-					// 			<div className="songTop__info">
-					// 				<p>{item?.name}</p>
-					// 				{item.artists?.map( (artist) => (
-					// 					<span className="songTop__artist">
-					// 						<Link to={`/Artist/${artist?.id}`}>{artist?.name}</Link>, {" "}
-					// 					</span>
-					// 				))}
-					// 			</div>
-					// 		</div>
-					// 		<div className="songTop_time">
-					// 			{millisecondsToMinutesAndSeconds(item.duration_ms)}
-					// 		</div>
-					// 	</div>
-					// </div>
 				))} 
 			</section>
 		</div>

@@ -19,7 +19,7 @@ function Sidebar() {
 			<nav>
 				<SidebarOption key={slugify("Home")} title="Home" Icon={HomeIcon}  />
 				<SidebarOption key={slugify("Search")} title="Search" Icon={SearchIcon} Linkto={"/search"} />
-				<SidebarOption key={slugify("Your  Library")} title="Your Library" Icon={LibraryMusic} Linkto={"/your-library"} />
+				<SidebarOption key={slugify("Novedades")} title="Novedades" Icon={LibraryMusic} Linkto={"/novedades"} />
 			</nav>
 			<br />
 			<strong className="sidebar__title">PLAYLISTS</strong>
