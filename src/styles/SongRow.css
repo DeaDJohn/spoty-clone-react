@@ -104,6 +104,7 @@
   letter-spacing: normal;
   line-height: 24px;
   text-transform: none;
+  position: relative;
 }
 .songTop_time{
   -webkit-box-align: center;
@@ -115,6 +116,19 @@
     grid-column: last;
     justify-self: end;
     color: rgb(179, 179, 179);
+}
+.songTop .added__icon{
+  position: absolute;
+  top: 15px;
+  left: 9px;
+  transform: translateY(7px);
+  transition: all 1.5s ease;
+  opacity: 0;
+  color: #1ed15e;
+}
+.songTop.loading .added__icon{
+  transform: translateY(-7px);
+  opacity: 1;
 }
 .songTop_row.tracklist-row {
   grid-template-columns: [index] 16px [first] 4fr [last] minmax(120px, 1fr);
